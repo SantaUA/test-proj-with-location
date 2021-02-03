@@ -1,0 +1,16 @@
+<div class="shops-list">
+  <secondary-title [text]="shopsTitle"></secondary-title>
+  <loader *ngIf="(shopsListService.requestPending$ | async)?.loading"></loader>
+  <div
+    class="shops-list__no-shops-message"
+    *ngIf="
+      !(shopsListService.requestPending$ | async)?.loading &&
+      !(shopsListService.shopsList$ | async)?.length
+    "
+  >
+    <secondary-title [text]="noShopsMessage"></secondary-title>
+  </div>
+  <ng-container *ngFor="let shop of shopsListService.shopsList$ | async">
+    <shop-card [shop]="shop"></shop-card>
+  </ng-container>
+</div>

@@ -1,0 +1,26 @@
+@import "src/app/shared/styles/variables";
+
+.shops-list {
+  display: flex;
+  flex-direction: column;
+
+  &__no-shops-message {
+    display: flex;
+    flex: 1;
+    max-width: 264px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    background: $main-color;
+    padding: 10px;
+  }
+
+  secondary-title {
+    margin-bottom: 10px;
+  }
+
+  loader {
+    margin: auto;
+  }
+}

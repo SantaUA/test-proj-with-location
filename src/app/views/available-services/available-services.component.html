@@ -1,0 +1,19 @@
+<div class="available-services">
+  <secondary-title [text]="titleText"> </secondary-title>
+
+  <div class="available-services__list">
+    <ng-container *ngFor="let service of services">
+      <service-card
+        class="available-services__list__item"
+        [serviceName]="service.name"
+        [imgName]="service.img"
+      ></service-card>
+    </ng-container>
+  </div>
+</div>
+
+
+<div class="square">
+  <div class="content">
+  </div>
+</div>

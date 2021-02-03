@@ -1,0 +1,14 @@
+<div class="dashboard">
+  <div class="dashboard__block">
+    <main-title [text]="welcomeText"></main-title>
+    <text-block [text]="descriptionText">
+      <a [href]="howItWorksLink" target="_blank">{{ howItWorks }}</a>
+    </text-block>
+  </div>
+  <div class="dashboard__block">
+    <available-services></available-services>
+  </div>
+  <div class="dashboard__block">
+    <shops-list></shops-list>
+  </div>
+</div>
