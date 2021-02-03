@@ -7,10 +7,14 @@ import { UserLocation } from '../models/user-location';
   providedIn: 'root',
 })
 export class LocationService {
-  private userLocationSubject: BehaviorSubject<UserLocation> = new BehaviorSubject(<UserLocation>{});
+  private userLocationSubject: BehaviorSubject<UserLocation> = new BehaviorSubject(
+    <UserLocation>{}
+  );
   public readonly userLocation$: Observable<any> = this.userLocationSubject.asObservable();
 
-  private locationSupportedSubject: BehaviorSubject<any> = new BehaviorSubject(true);
+  private locationSupportedSubject: BehaviorSubject<any> = new BehaviorSubject(
+    true
+  );
   public readonly locationSupported$: Observable<any> = this.locationSupportedSubject.asObservable();
 
   constructor() {
@@ -26,13 +30,13 @@ export class LocationService {
       };
 
       const success = (pos: any) => {
-        // this.locationSupportedSubject.next(true);
+        this.locationSupportedSubject.next(true);
         var { latitude, longitude } = pos.coords;
         this.userLocationSubject.next({ latitude, longitude });
       };
 
       const error = (err: any) => {
-        // this.locationSupportedSubject.next(false);
+        this.locationSupportedSubject.next(false);
         console.warn(`ERROR(${err.code}): ${err.message}`);
       };
       navigator.geolocation.getCurrentPosition(success, error, options);
@@ -44,9 +48,14 @@ export class LocationService {
   public calculateDistanceToUser = (pointBCoords: UserLocation) => {
     const pointACoords = this.userLocationSubject.getValue();
 
-    const pointA = {lat : Number('47.37748618584959'), long: Number('8.527029266851189')};
-    // const pointA = {lat : Number(pointACoords.latitude), long: Number(pointACoords.longitude)};
-    const pointB = {lat : Number(pointBCoords.latitude), long: Number(pointBCoords.longitude)};
+    const pointA = {
+      lat: Number(pointACoords.latitude),
+      long: Number(pointACoords.longitude),
+    };
+    const pointB = {
+      lat: Number(pointBCoords.latitude),
+      long: Number(pointBCoords.longitude),
+    };
 
     const rad = (x: any) => (x * Math.PI) / 180;
 

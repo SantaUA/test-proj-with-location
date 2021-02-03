@@ -19,15 +19,9 @@ export class ShopsListComponent implements OnInit {
     public shopsListService: ShopsListService
   ) {
     this.locationService.userLocation$.subscribe((location: UserLocation) => {
-      // zurich coords
-      this.shopsListService.requestShopsList({
-        latitude: '47.37748618584959',
-        longitude: '8.527029266851189',
-        range: '3000',
-      });
-      // if (location.latitude || location.longitude) {
-      //   this.shopsListService.requestShopsList(location);
-      // }
+      if (location.latitude || location.longitude) {
+        this.shopsListService.requestShopsList(location);
+      }
     });
   }
 
